@@ -1,17 +1,18 @@
 import numpy as np
 
+
 class EM:
     def __init__(self, X1, X2):
         self.X1 = X1
         self.X2 = X2
 
-    def fit(samples=5, n=10, eps=0.005):
+    def fit(self, samples=5, n=10, eps=0.005):
         theta1 = 0.5
         theta2 = 0.6
         for i in range(samples):
 
-            sample1 = np.random.binomial(p=0.5, n=n)
-            sample2 = np.random.binomial(p=0.5, n=n)
+            sample1 = np.random.binomial(p=self.X1[i], n=n)
+            sample2 = np.random.binomial(p=self.X2[i], n=n)
             H1, T1 = self._ML(sample1, n)
             H2, T2 = self._ML(sample2, n)
             value1 = theta1 * H1
